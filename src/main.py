@@ -65,5 +65,5 @@ while True:
         if event.type == pygame.QUIT: 
             sys.exit(0) 
         else: 
-            print event
+            print (event)
 
