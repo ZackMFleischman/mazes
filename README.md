@@ -1,6 +1,6 @@
 Maze Explorations
 =====
-This python script will auto-generate a maze image.
+This python script will generate and solve a large maze.
 
 ####Setup
 It is built on top of **pygame**.
