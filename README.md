@@ -12,7 +12,7 @@ pip install install https://bitbucket.org/pygame/pygame/get/default.tar.gz
 
 Afterwards, run via the command:
 ```
-python maze.py
+python src/maze.py
 ```
 
 ####Output
