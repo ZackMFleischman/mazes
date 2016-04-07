@@ -1,6 +1,5 @@
-from enum import Enum
-class Color(Enum):
-  white = [1,1,1] 
+class Color():
+  white = [1,1,1]
   black = [0,0,0]
   yellow = [1, 1, 0]
   blue = [0,0,1]

@@ -19,7 +19,7 @@ cellSize = 5
 cellsX=160
 cellsY=130
 
-f = open('/Users/zfleischman/scripts/mazes/mazeLog2.txt', 'w')
+f = open('/Users/zfleischman/repos/mazes/logs/mazeLog2.txt', 'w+')
 
 def solveHelper(S, goal):
     global f
@@ -27,7 +27,7 @@ def solveHelper(S, goal):
         return (False, [])
     f.write(repr(printQ(S)))
     f.write("----\n")
-    
+
     cell = S.pop()
     cell.visited = True
     if (cell.ID == goal.ID):
@@ -52,7 +52,7 @@ def solveHelper(S, goal):
         f.write("Go North\n")
         S.append(cell.n)
         (solved, S) = solveHelper(S, goal)
-    
+
     if solved:
         f.write("Solved!\n")
         S.insert(0, cell)
@@ -65,7 +65,7 @@ def solveHelper(S, goal):
 
 def solve(start, end):
     global f
-    stack = [start] 
+    stack = [start]
     (retValue, finalStack) = solveHelper(stack, end)
     if retValue:
         f.write(repr(printQ(finalStack)))
@@ -79,7 +79,7 @@ def maze(width=80, height=50):
     Z = numpy.ones((height+borderSize,width+borderSize,3), dtype=float)
 
     # Generate Maze
-    maze = MazeGenerator.getRandomMaze((cellsX, cellsY));
+    maze = MazeGenerator.getRandomMaze(cellsX, cellsY);
 
     # Reset
     for x in range(len(maze)):
@@ -96,16 +96,16 @@ def maze(width=80, height=50):
     for x in range(len(maze)):
         for y in range(len(maze[0])):
             if (x == len(maze)-1) and (y == len(maze[0])-1):
-                maze[x][y].draw(Z, borderSize, cellSize, edgeSize, True)       
+                maze[x][y].draw(Z, borderSize, cellSize, edgeSize, True)
             else:
-                maze[x][y].draw(Z, borderSize, cellSize, edgeSize)       
+                maze[x][y].draw(Z, borderSize, cellSize, edgeSize)
     for x in range(len(maze)):
         for y in range(len(maze[0])):
             if (maze[x][y].fillColor == None):
                 if (x == len(maze)-1) and (y == len(maze[0])-1):
-                    maze[x][y].draw(Z, borderSize, cellSize, edgeSize, True)       
+                    maze[x][y].draw(Z, borderSize, cellSize, edgeSize, True)
                 else:
-                    maze[x][y].draw(Z, borderSize, cellSize, edgeSize)       
+                    maze[x][y].draw(Z, borderSize, cellSize, edgeSize)
     return Z
 
 

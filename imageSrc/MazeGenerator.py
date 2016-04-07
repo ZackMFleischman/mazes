@@ -4,7 +4,7 @@ import random
 from colors import Color
 
 iteration = 0
-f = open('/Users/zfleischman/scripts/mazes/mazeLog.txt', 'w')
+f = open('/Users/zfleischman/repos/mazes/logs/mazeLog.txt', 'w+')
 
 def printQ(Q):
     x = []
@@ -22,9 +22,9 @@ def process(cell, Q):
 
     # Add to Q
     Q.append(cell)
-    
+
     (retValue, neighbor) = cell.connectToRandomUnvisitedNeighbor()
-    return (retValue, neighbor, Q) 
+    return (retValue, neighbor, Q)
 
 def generateMaze(maze):
     startX = random.randint(0,len(maze))
@@ -37,18 +37,18 @@ def generateMaze(maze):
     while firstTime or Q:
         firstTime = False
         (retValue, neighbor, Q) = process(cell, Q)
-        # If we successfully appended neighbor, process the neighbor 
+        # If we successfully appended neighbor, process the neighbor
         if (retValue == 0):
             cell = neighbor
         # If we have no unvisited neighbors, remove from Q
         elif (retValue == 1):
             Q.pop()
-            
+
         if Q and retValue != 0:
             cell = Q.popleft()
 
-def getRandomMaze((w,h)):
-    newMaze = [[0 for x in range(h)] for x in range(w)] 
+def getRandomMaze(w,h):
+    newMaze = [[0 for x in range(h)] for x in range(w)]
     cellID = 1
     for x in range(w):
         for y in range(h):
@@ -68,4 +68,4 @@ def getRandomMaze((w,h)):
     generateMaze(newMaze)
 
     return newMaze
-    
+
